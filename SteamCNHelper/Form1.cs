@@ -14,6 +14,7 @@ namespace SteamCNHelper
     public partial class Form1 : Form
     {
         public bool wishListMode = true;
+        public List<int> wishListCount = new List<int>();
         public Form1()
         {
             InitializeComponent();
@@ -74,7 +75,7 @@ namespace SteamCNHelper
                     {
                         //Console.WriteLine();
                         int id = int.Parse(match.Groups["id"].Value);
-                        ForumThread ft = Manager.ReadThread(id);
+                        ForumThread ft = checkBox1.Checked?null:Manager.ReadThread(id);
                         if (ft == null || ft.Name != match.Groups["t"].Value)
                         {
                             TaskQueue.Enqueue("http://steamcn.com/archiver/tid-" + id.ToString() + ".html");
@@ -108,7 +109,7 @@ namespace SteamCNHelper
 
             if (wishListMode)
             {
-                button8_Click(sender, e);
+                UpdateWishlist();
             }
         }
 
@@ -116,6 +117,7 @@ namespace SteamCNHelper
         {
             wishListMode = false;
             listView1.Items.Clear();
+            if (textBox2.Text == "") return;
             ItemLine[] res = ItemLinePool.FindByString(textBox2.Text);
             foreach (ItemLine i in res)
             {
@@ -139,9 +141,12 @@ namespace SteamCNHelper
         private void UpdateWishlist()
         {
             listBox.Items.Clear();
-            foreach(string str in Wishlist.list)
+            // Todo : Reduce Complexity
+            for (int i = 0; i < Wishlist.list.Count;++i )
             {
-                listBox.Items.Add(str);
+                string str = Wishlist.list[i];
+                int count = ItemLinePool.FindByStringGroup(str.Split(';')).Count();
+                listBox.Items.Add("(" + count.ToString() + ")" + str);
             }
         }
 
@@ -188,9 +193,27 @@ namespace SteamCNHelper
         {
             if (listBox.SelectedIndex != -1)
             {
-                textBox2.Text = Wishlist.list[listBox.SelectedIndex];
-                button4_Click(sender, e);
+                listView1.Items.Clear();
+                ItemLine[] res = ItemLinePool.FindByStringGroup(Wishlist.list[listBox.SelectedIndex].Split(';'));
+                foreach (ItemLine i in res)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[] { i.Price == 0f ? "不详" : i.Price.ToString(), i.ThreadID.ToString(), i.Str }));
+                }
             }
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+
+            if (listView1.ListViewItemSorter != null && (listView1.ListViewItemSorter as ListViewColumnComparer).Column == e.Column)
+            {
+                listView1.ListViewItemSorter = new ListViewColumnComparer(e.Column, !(listView1.ListViewItemSorter as ListViewColumnComparer).Reverse);
+            }
+            else
+            {
+                listView1.ListViewItemSorter = new ListViewColumnComparer(e.Column, false);
+            }
+            
         }
     }
 }

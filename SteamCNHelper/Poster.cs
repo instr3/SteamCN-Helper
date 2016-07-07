@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using System.Windows.Forms;
 
 namespace SteamCNHelper
 {
@@ -85,23 +86,46 @@ namespace SteamCNHelper
         }
         public static string GetStatic(string url, CookieContainer cookies)
         {
-            try
+            //url = "http://steamcn.com/forum.php";
+            HttpWebResponse httpWebResponse;
+            HttpWebRequest req;
+            while(true)
             {
-                HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
-                req.Timeout = 10000;
-                req.Method = "GET";
-                req.ContentType = "application/x-www-form-urlencoded";
-                req.CookieContainer = cookies;
-                HttpWebResponse httpWebResponse = (HttpWebResponse)req.GetResponse();
-                Stream stream = httpWebResponse.GetResponseStream();
-                StreamReader streamReader = new StreamReader(stream, Encoding.GetEncoding(GlobalEncoding));
-                string result = streamReader.ReadToEnd();
-                stream.Close();
-                return result;
-            }
-            catch (Exception e)
-            {
-                throw e;
+                try
+                {
+                    //req = (HttpWebRequest)HttpWebRequest.Create(url);
+                    //req.Timeout = 10000;
+                    //req.Method = "GET";
+                    //req.ContentType = "application/x-www-form-urlencoded";
+                    //req.Proxy = null;
+                    //req.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+                    //req.Headers.Add("Accept-Encoding", "gzip, deflate, sdch");
+                    //req.Headers.Add("Cache-Control", "max-age=0");
+                    //req.KeepAlive = true;
+                    //req.Host="steamcn.com";
+                    //req.Referer="http://steamcn.com/";
+                    //req.Headers.Add("Upgrade-Insecure-Requests", "1");
+                    //req.Headers.Add("Accept-Language", "zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3");
+                    //req.UserAgent = "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
+                    //req.CookieContainer = cookies;
+
+                    req = (HttpWebRequest)HttpWebRequest.Create(url);
+                    req.Timeout = 10000;
+                    req.Method = "GET";
+                    req.ContentType = "application/x-www-form-urlencoded";
+                    req.CookieContainer = cookies;
+                    httpWebResponse = (HttpWebResponse)req.GetResponse();
+                    Stream stream = httpWebResponse.GetResponseStream();
+                    StreamReader streamReader = new StreamReader(stream, Encoding.GetEncoding(GlobalEncoding));
+                    string result = streamReader.ReadToEnd();
+                    stream.Close();
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                    //MessageBox.Show(e.Message);
+                }
             }
 
         }

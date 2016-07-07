@@ -26,5 +26,10 @@ namespace SteamCNHelper
         {
             Poster.AddCookieInString("steamcn.com", FullWebBrowserCookie.GetCookieInternal(new Uri("http://steamcn.com"), false), ref Poster.LoginCookie);
         }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
     }
 }

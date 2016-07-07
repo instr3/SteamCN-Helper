@@ -49,11 +49,12 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(252, 28);
+            this.button1.Location = new System.Drawing.Point(262, 14);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -63,9 +64,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(171, 57);
+            this.button2.Location = new System.Drawing.Point(180, 16);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(76, 23);
             this.button2.TabIndex = 0;
             this.button2.Text = "加载";
             this.button2.UseVisualStyleBackColor = true;
@@ -73,11 +74,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(340, 28);
+            this.textBox1.Location = new System.Drawing.Point(350, 14);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(276, 79);
+            this.textBox1.Size = new System.Drawing.Size(276, 102);
             this.textBox1.TabIndex = 1;
             // 
             // listView1
@@ -88,12 +89,13 @@
             this.LVTextColumn});
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(171, 113);
+            this.listView1.Location = new System.Drawing.Point(181, 122);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(445, 195);
+            this.listView1.Size = new System.Drawing.Size(445, 254);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
             this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // LVPriceColumn
@@ -111,7 +113,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(387, -1);
+            this.button3.Location = new System.Drawing.Point(561, 271);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 0;
@@ -121,7 +123,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(171, 86);
+            this.textBox2.Location = new System.Drawing.Point(181, 95);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(156, 21);
             this.textBox2.TabIndex = 3;
@@ -134,7 +136,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(252, 57);
+            this.button4.Location = new System.Drawing.Point(262, 66);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 0;
@@ -146,9 +148,9 @@
             // 
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 12;
-            this.listBox.Location = new System.Drawing.Point(12, 40);
+            this.listBox.Location = new System.Drawing.Point(22, 26);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(152, 244);
+            this.listBox.Size = new System.Drawing.Size(152, 316);
             this.listBox.TabIndex = 4;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             this.listBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_MouseDoubleClick);
@@ -156,7 +158,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 22);
+            this.label1.Location = new System.Drawing.Point(23, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 5;
@@ -164,16 +166,16 @@
             // 
             // textBoxMaxPage
             // 
-            this.textBoxMaxPage.Location = new System.Drawing.Point(171, 28);
+            this.textBoxMaxPage.Location = new System.Drawing.Point(180, 45);
             this.textBoxMaxPage.Name = "textBoxMaxPage";
             this.textBoxMaxPage.Size = new System.Drawing.Size(53, 21);
             this.textBoxMaxPage.TabIndex = 3;
-            this.textBoxMaxPage.Text = "20";
+            this.textBoxMaxPage.Text = "5";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(230, 33);
+            this.label2.Location = new System.Drawing.Point(239, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 12);
             this.label2.TabIndex = 5;
@@ -181,7 +183,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(60, 19);
+            this.button5.Location = new System.Drawing.Point(70, 5);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(22, 21);
             this.button5.TabIndex = 6;
@@ -191,7 +193,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(88, 18);
+            this.button6.Location = new System.Drawing.Point(98, 5);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(22, 21);
             this.button6.TabIndex = 6;
@@ -201,7 +203,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(116, 19);
+            this.button7.Location = new System.Drawing.Point(126, 5);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(22, 21);
             this.button7.TabIndex = 6;
@@ -211,7 +213,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(12, 285);
+            this.button8.Location = new System.Drawing.Point(21, 353);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(153, 23);
             this.button8.TabIndex = 0;
@@ -219,11 +221,22 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(262, 44);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(72, 16);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "强制更新";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 320);
+            this.ClientSize = new System.Drawing.Size(638, 388);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -240,7 +253,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SteamCN交易区搜索工具";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -269,6 +282,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="ItemLine.cs" />
     <Compile Include="ItemLinePool.cs" />
+    <Compile Include="ListViewColumnComparer.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
