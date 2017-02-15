@@ -18,11 +18,12 @@ namespace SteamCNHelper
             string[] cookstr = cookieStr.Split(';');
             foreach (string str in cookstr)
             {
-                int pos = str.IndexOf('=');
-                Cookie ck = new Cookie(str.Substring(0, pos).Trim(), str.Substring(pos + 1).Trim());
+                string newStr = str.Replace(",", "%2c");
+                int pos = newStr.IndexOf('=');
+                Cookie ck = new Cookie(newStr.Substring(0, pos).Trim(), newStr.Substring(pos + 1).Trim());
                 ck.Expires = DateTime.Now.AddMonths(1);
                 //ck.Expired = false;
-                //cookies.Add(new Uri("http://"+siteName), ck);
+                //cookies.Add(new Uri("https://"+siteName), ck);
                 ck.Domain = siteName;
                 cookies.Add(ck);
             }
@@ -86,7 +87,7 @@ namespace SteamCNHelper
         }
         public static string GetStatic(string url, CookieContainer cookies)
         {
-            //url = "http://steamcn.com/forum.php";
+            //url = "https://steamcn.com/forum.php";
             HttpWebResponse httpWebResponse;
             HttpWebRequest req;
             while(true)
@@ -103,7 +104,7 @@ namespace SteamCNHelper
                     //req.Headers.Add("Cache-Control", "max-age=0");
                     //req.KeepAlive = true;
                     //req.Host="steamcn.com";
-                    //req.Referer="http://steamcn.com/";
+                    //req.Referer="https://steamcn.com/";
                     //req.Headers.Add("Upgrade-Insecure-Requests", "1");
                     //req.Headers.Add("Accept-Language", "zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3");
                     //req.UserAgent = "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";

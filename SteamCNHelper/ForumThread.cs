@@ -25,7 +25,7 @@ namespace SteamCNHelper
             string source;
             try
             {
-                source = Poster.GetStatic(url, Poster.LoginCookie);
+                source = Poster.GetStatic(url, Poster.LoginCookie).Replace("\t","");
             }
             catch(Exception e)
             {
@@ -34,17 +34,17 @@ namespace SteamCNHelper
             ID = int.Parse(Common.StrBetween(url, "tid-", ".html"));
             Name = Common.StrBetween(source, "<h3>", "</h3>");
             Author = Common.StrBetween(source, "<p class=\"author\">\n<strong>", "</strong>");
-            string tempTime = Common.StrBetween(source, "</strong>\n发表于 ", " </p>");
-            if (tempTime[0] == '<')
-            {
-                tempTime = Common.StrBetween(tempTime, "<span title=\"", "\">");
-            }
-            PostTime = DateTime.Parse(tempTime);
-            if (source.IndexOf("<h3>" + Name + "</h3>\n本帖最后由 " + Author + " 于 ") >= 0)
-            {
-                LastModifiedTime = DateTime.Parse(Common.StrBetween(source, "本帖最后由 " + Author + " 于 ", " 编辑 <br/>"));
-            }
-            else LastModifiedTime = PostTime;
+            //string tempTime = Common.StrBetween(source, "</strong>\n发表于 ", " </p>");
+            //if (tempTime[0] == '<')
+            //{
+            //    tempTime = Common.StrBetween(tempTime, "<span title=\"", "\">");
+            //}
+            //PostTime = DateTime.Parse(tempTime);
+            //if (source.IndexOf("<h3>" + Name + "</h3>\n本帖最后由 " + Author + " 于 ") >= 0)
+            //{
+            //    LastModifiedTime = DateTime.Parse(Common.StrBetween(source, "本帖最后由 " + Author + " 于 ", " 编辑 <br/>"));
+            //}
+            //else LastModifiedTime = PostTime;
             string wholeThread = Common.StrBetween(source, "<p class=\"author\">\n", "<div class=\"page\">");
             int pos = wholeThread.IndexOf("<p class=\"author\">");
             if (pos >= 0)

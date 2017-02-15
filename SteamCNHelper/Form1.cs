@@ -25,7 +25,7 @@ namespace SteamCNHelper
             Manager.ReadWishList();
             UpdateWishlist();
             listView1.Items.Clear();
-            Poster.AddCookieInString("steamcn.com", FullWebBrowserCookie.GetCookieInternal(new Uri("http://steamcn.com"), false), ref Poster.LoginCookie);
+            Poster.AddCookieInString("steamcn.com", FullWebBrowserCookie.GetCookieInternal(new Uri("https://steamcn.com"), false), ref Poster.LoginCookie);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,10 +40,10 @@ namespace SteamCNHelper
             int limit = int.Parse(textBoxMaxPage.Text);
             for (int page = 1; page <= limit; ++page)
             {
-                TaskQueue.Enqueue("http://steamcn.com/archiver/fid-201.html?page=" + page);
+                TaskQueue.Enqueue("https://steamcn.com/archiver/fid-201.html?page=" + page);
             }
-            //ForumThread th = new ForumThread("http://steamcn.com/archiver/tid-128535.html");
-            //string src = Poster.GetStatic("http://steamcn.com/archiver/tid-128535.html", Poster.LoginCookie);
+            //ForumThread th = new ForumThread("https://steamcn.com/archiver/tid-128535.html");
+            //string src = Poster.GetStatic("https://steamcn.com/archiver/tid-128535.html", Poster.LoginCookie);
 
             //MessageBox.Show("begin");
             //Match a = Regex.Match(src, @"(?<=<p class=""author"">)[^\a]*(?=<h3>)");
@@ -78,7 +78,7 @@ namespace SteamCNHelper
                         ForumThread ft = checkBox1.Checked?null:Manager.ReadThread(id);
                         if (ft == null || ft.Name != match.Groups["t"].Value)
                         {
-                            TaskQueue.Enqueue("http://steamcn.com/archiver/tid-" + id.ToString() + ".html");
+                            TaskQueue.Enqueue("https://steamcn.com/archiver/tid-" + id.ToString() + ".html");
                         }
                         else
                         {
@@ -95,8 +95,9 @@ namespace SteamCNHelper
                     {
                         ft = new ForumThread(url);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Console.WriteLine("Something wrong");
                         TaskQueue.Enqueue(url);
                         return;
                     }
@@ -128,7 +129,7 @@ namespace SteamCNHelper
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             string tid = listView1.SelectedItems[0].SubItems[1].Text;
-            System.Diagnostics.Process.Start("http://steamcn.com/t" + tid + "-1-1");
+            System.Diagnostics.Process.Start("https://steamcn.com/t" + tid + "-1-1");
         }
 
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)

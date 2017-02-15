@@ -19,12 +19,12 @@ namespace SteamCNHelper
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            webBrowser1.Navigate("http://steamcn.com/");
+            webBrowser1.Navigate("https://steamcn.com/");
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Poster.AddCookieInString("steamcn.com", FullWebBrowserCookie.GetCookieInternal(new Uri("http://steamcn.com"), false), ref Poster.LoginCookie);
+            Poster.AddCookieInString("steamcn.com", FullWebBrowserCookie.GetCookieInternal(new Uri("https://steamcn.com"), false), ref Poster.LoginCookie);
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
