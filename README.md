@@ -6,7 +6,7 @@
 ![maimaimai](http://steamcn.com/static/image/smiley/steamcn_8/kbc171.gif)
 ![maimaimai](http://steamcn.com/static/image/smiley/steamcn_8/kbc171.gif)
 
-采用正则表达式匹配的方法，可以匹配交易区主题内每一行的价格信息（例如“xxx：十腿”）或者价格上下文（例如“以下每个5毛”），准确度接近90%。
+采用正则表达式匹配的方法，可以匹配交易区主题内每一行的价格信息（例如“xxx：十腿”）或者价格上下文（例如“以下每个5毛”），准确度接近80%。
 
 ## 使用方法
 
